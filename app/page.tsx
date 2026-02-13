@@ -1,8 +1,8 @@
-import { supabase } from "../lib/supabase";
+import type { ReactElement } from "react";
 import { getEntries } from "../lib/types";
 
-export default async function HomePage(): Promise<JSX.Element> {
-  const { entries, error } = await getEntries(supabase);
+export default async function HomePage(): Promise<ReactElement> {
+  const { entries, error } = await getEntries();
 
   return (
     <main style={{ margin: "0 auto", maxWidth: 720, padding: "2rem 1rem" }}>

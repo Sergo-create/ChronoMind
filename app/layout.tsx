@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Digital Consciousness MVP",
@@ -10,7 +10,9 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
+export default function RootLayout({
+  children,
+}: RootLayoutProps): ReactElement {
   return (
     <html lang="en">
       <body>{children}</body>

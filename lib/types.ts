@@ -1,4 +1,4 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
+import { supabase } from "./supabase";
 
 export type Database = {
   public: {
@@ -32,15 +32,14 @@ export type Database = {
 };
 
 export type Entry = Database["public"]["Tables"]["entries"]["Row"];
-export type DbClient = SupabaseClient<Database>;
 
 export interface GetEntriesResult {
   entries: Entry[];
   error: string | null;
 }
 
-export async function getEntries(client: DbClient): Promise<GetEntriesResult> {
-  const { data, error } = await client
+export async function getEntries(): Promise<GetEntriesResult> {
+  const { data, error } = await supabase
     .from("entries")
     .select("id, title, content, created_at")
     .order("created_at", { ascending: false });
